@@ -1,6 +1,8 @@
 const TetelekLista = document.getElementById("lista");
 const KerdesKontener = document.getElementById("kerdesKontener");
 const ValaszGombok = document.querySelectorAll("#valaszKontener .answer");
+const QuizKontener = document.getElementById("QuizKontener");
+const EredmenyGrid = document.getElementById("eredmenyGrid");
 
 //#region Kérdések kezelése
 /*
@@ -63,7 +65,7 @@ function JatekIndit(_tetel, _forditott) {
     KovetkezoKerdes();
 
     document.getElementById("InditoKontener").style.display = "none";
-    document.getElementById("QuizKontener").style.display = "block";
+    QuizKontener.style.display = "block";
 }
 
 function KovetkezoKerdes() {
@@ -115,9 +117,30 @@ function Eredmenyek() {
     const helyes = ertekeles.filter(x => x.helyes).length;
     const szazalek = Math.round(helyes / mennyibol * 100);
 
-    alert("VÉGE")
+    document.getElementById("statok").innerText = `Helyesen megválaszolt: ${helyes}/${mennyibol} (${szazalek}%)`
 
-    //todo: HTMl
+    for (const k of ertekeles) {
+        const tetelEl = document.createElement("div");
+        tetelEl.innerHTML = k.kerdes.tetel;
+        EredmenyGrid.appendChild(tetelEl);
+
+        const kerdesEl = document.createElement("div");
+        kerdesEl.innerHTML = k.kerdes[forditott ? "valasz" : "kerdes"];
+        EredmenyGrid.appendChild(kerdesEl);
+
+        const valaszEl = document.createElement("div");
+        valaszEl.innerHTML = k.adottValasz;
+        valaszEl.className = k.helyes ? "helyes" : "rossz";
+        EredmenyGrid.appendChild(valaszEl);
+
+        const helyesEl = document.createElement("div");
+        helyesEl.innerHTML = k.helyes ? "✔" : k.kerdes[forditott ? "kerdes" : "valasz"];
+        helyesEl.className = "helyes";
+        EredmenyGrid.appendChild(helyesEl);
+    }
+
+    QuizKontener.style.display = "none";
+    document.getElementById("EredmenyKontener").style.display = "";
 }
 //#endregion
 

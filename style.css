@@ -54,7 +54,49 @@
     }
 }
 
+#EredmenyKontener {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
 
+    h3 {
+        color: white;
+        text-align: center;
+    }
+}
+
+#eredmenyGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+
+    width: 80vh;
+    max-width: 500px;
+    margin: auto;
+
+    background-color: white;
+    padding: 2rem;
+    border-radius: 50px 50px;
+
+    .helyes {
+        color: green;
+    }
+
+    .rossz {
+        color: red;
+    }
+
+    >div:nth-child(4n + 1) {
+        font-weight: bold;
+    }
+
+    >div:nth-child(4n) {
+        border-bottom: 2px solid black;
+        padding-bottom: 4px;
+    }
+}
 
 
 #valaszKontener{
@@ -128,6 +170,16 @@ p{
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     text-align: justify;
+}
+
+@media screen and (min-width: 1200px) {
+    #eredmenyGrid {
+        grid-template-columns: repeat(4, 1fr);
+
+        >div {
+            border-bottom: 2px solid black;
+        }
+    }
 }
 
 @media (min-width: 1900px) {
@@ -226,7 +278,6 @@ p{
 
 body{
     background-color: #00006a;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
