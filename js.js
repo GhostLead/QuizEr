@@ -1,3 +1,4 @@
+const TetelekLista = document.getElementById("lista");
 const KerdesKontener = document.getElementById("kerdesKontener");
 const ValaszGombok = document.querySelectorAll("#valaszKontener .answer");
 
@@ -23,6 +24,7 @@ async function KerdesekBetoltese() {
             tetel: mezok[0],
             kerdes: mezok[1],
             valasz: mezok[2],
+            kepek: mezok.slice(3),
             kihuzott: false
         });
     }
@@ -40,26 +42,34 @@ function Tetelek() {
     return Object.keys(Kerdesek);
 }
 
-function LehetsegesValaszok(tetel) {
-    return tetel in Kerdesek ? Kerdesek[tetel].map(x => x.valasz) : [];
+function LehetsegesValaszok(tetel, forditott) {
+    return tetel in Kerdesek ? Kerdesek[tetel].map(x => forditott ? x.kerdes : x.valasz) : [];
 }
 //#endregion
 
 //#region Játékállás kezelése
 let tetel = null;
 let hatralevoKerdesek = 0;
-let aktivKerdes;
+let forditott = false;
 
-function JatekIndit(_tetel) {
+let aktivKerdes;
+let ertekeles = [];
+
+function JatekIndit(_tetel, _forditott) {
     tetel = _tetel;
-    hatralevoKerdesek = Math.max((tetel == "_osszes" ? OsszesKerdes() : Kerdesek[tetel]).length, 20);
+    forditott = _forditott;
+    hatralevoKerdesek = Math.min((tetel == "_osszes" ? OsszesKerdes() : Kerdesek[tetel]).length, 20);
 
     KovetkezoKerdes();
+
+    document.getElementById("InditoKontener").style.display = "none";
+    document.getElementById("QuizKontener").style.display = "block";
 }
 
 function KovetkezoKerdes() {
     if (hatralevoKerdesek == 0) {
         //todo: Játék vége
+        console.log(ertekeles);
         return;
     }
 
@@ -69,17 +79,17 @@ function KovetkezoKerdes() {
     aktivKerdes = MaradekKerdesek[Math.floor(Math.random() * MaradekKerdesek.length)];
     aktivKerdes.kihuzott = true;
 
-    let lehetsegesValaszok = LehetsegesValaszok(aktivKerdes.tetel);
+    let lehetsegesValaszok = LehetsegesValaszok(aktivKerdes.tetel, forditott).filter(x => x !== (forditott ? aktivKerdes.kerdes : aktivKerdes.valasz));
     let valaszok = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
         const v = lehetsegesValaszok[Math.floor(Math.random() * lehetsegesValaszok.length)];
         lehetsegesValaszok = lehetsegesValaszok.filter(x => x !== v);
         valaszok.push(v);
     }
-    valaszok.splice(Math.floor(Math.random() * 4), 0, aktivKerdes.valasz);
+    valaszok.splice(Math.floor(Math.random() * 5), 0, forditott ? aktivKerdes.kerdes : aktivKerdes.valasz);
 
     KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel;
-    KerdesKontener.querySelector("p").innerText = aktivKerdes.kerdes;
+    KerdesKontener.querySelector("p").innerText = forditott ? aktivKerdes.valasz : aktivKerdes.kerdes;
 
     for (let index = 0; index < valaszok.length; index++) {
         ValaszGombok[index].querySelector("span").innerText = valaszok[index];
@@ -88,28 +98,44 @@ function KovetkezoKerdes() {
 }
 
 function Valaszol(valasz) {
-    if (valasz == aktivKerdes.valasz) {
-        alert("helyes");
-    }
-    else {
-        alert("rossz");
-    }
+    const helyes = valasz == ( forditott ? aktivKerdes.kerdes : aktivKerdes.valasz);
+    ertekeles.push({
+        kerdes: aktivKerdes,
+        adottValasz: valasz,
+        helyes: helyes
+    });
 
     KovetkezoKerdes();
 }
 //#endregion
 
-//#region Event Listenerek
+//#region Html Kezelők
 ValaszGombok.forEach(x => x.addEventListener("click", e => {
-    Valaszol(e.target.value);
+    Valaszol(e.currentTarget.value);
 }));
+
+document.querySelector("#InditoKontener button").addEventListener("click", () => {
+    JatekIndit(TetelekLista.value, document.getElementById("forditott").checked);
+});
+
+function TetelOptionFelrak() {
+    const el = document.createElement("option");
+    el.value = "_osszes";
+    el.innerText = "Összes";
+    TetelekLista.appendChild(el);
+
+    for (const tetel of Tetelek()) {
+        const el = document.createElement("option");
+        el.value = tetel;
+        el.innerText = tetel;
+        TetelekLista.appendChild(el);
+    }
+}
 //#endregion
 
 async function Init() {
     await KerdesekBetoltese();
-    
-    //TESZT
-    JatekIndit("_osszes");
+    TetelOptionFelrak();
 }
 
 Init();
