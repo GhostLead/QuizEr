@@ -68,17 +68,18 @@ function JatekIndit(_tetel, _forditott) {
 
 function KovetkezoKerdes() {
     if (hatralevoKerdesek == 0) {
-        //todo: Játék vége
-        console.log(ertekeles);
+        Eredmenyek();
         return;
     }
 
     hatralevoKerdesek--;
 
+    // Következő kérdés kiválasztása
     const MaradekKerdesek = (tetel == "_osszes" ? OsszesKerdes() : Kerdesek[tetel]).filter(x => x.kihuzott == false);
     aktivKerdes = MaradekKerdesek[Math.floor(Math.random() * MaradekKerdesek.length)];
     aktivKerdes.kihuzott = true;
 
+    // Lehetséges válaszok kiválasztása
     let lehetsegesValaszok = LehetsegesValaszok(aktivKerdes.tetel, forditott).filter(x => x !== (forditott ? aktivKerdes.kerdes : aktivKerdes.valasz));
     let valaszok = [];
     for (let i = 0; i < 4; i++) {
@@ -88,6 +89,7 @@ function KovetkezoKerdes() {
     }
     valaszok.splice(Math.floor(Math.random() * 5), 0, forditott ? aktivKerdes.kerdes : aktivKerdes.valasz);
 
+    // Kérdés, gombok átírása
     KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel;
     KerdesKontener.querySelector("p").innerText = forditott ? aktivKerdes.valasz : aktivKerdes.kerdes;
 
@@ -107,6 +109,16 @@ function Valaszol(valasz) {
 
     KovetkezoKerdes();
 }
+
+function Eredmenyek() {
+    const mennyibol = ertekeles.length;
+    const helyes = ertekeles.filter(x => x.helyes).length;
+    const szazalek = Math.round(helyes / mennyibol * 100);
+
+    alert("VÉGE")
+
+    //todo: HTMl
+}
 //#endregion
 
 //#region Html Kezelők
@@ -114,7 +126,7 @@ ValaszGombok.forEach(x => x.addEventListener("click", e => {
     Valaszol(e.currentTarget.value);
 }));
 
-document.querySelector("#InditoKontener button").addEventListener("click", () => {
+document.querySelector("#inditas").addEventListener("click", () => {
     JatekIndit(TetelekLista.value, document.getElementById("forditott").checked);
 });
 
