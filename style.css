@@ -37,17 +37,20 @@ option{
 }
 
 .circle{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: orange;
-    margin-left: 40px;
+    margin: 0 10px;
     border-radius: 50%;
     text-align: center;
-    font-size: 45px;
+    font-size: 52px;
+    text-align: center;
+    color: white;
 }
 
 .answer span{
-    
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
 }
 
 .answer{
@@ -55,6 +58,9 @@ option{
     height: 20%;
     border-radius: 50px 50px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -78,12 +84,17 @@ h1{
     font-size: 50px;
 }
 
+hr{
+    width: 90vw;
+}
+
 p{
     color: white;
     width: 80vw;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
+    text-align: justify;
 }
 
 
@@ -92,7 +103,7 @@ p{
 
 
 body{
-    background-color: darkblue;
+    background-color: #00006a;
     overflow: hidden;
     padding: 0;
     margin: 0;
