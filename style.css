@@ -191,6 +191,12 @@ p{
         flex-direction: row;
     }
 
+    .answer span{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .answer{
         width: 15vw;
         height: 15vw;
