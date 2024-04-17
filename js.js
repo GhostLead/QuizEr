@@ -1,3 +1,5 @@
+const KerdesKontener = document.getElementById("kerdesKontener");
+const ValaszGombok = document.querySelectorAll("#valaszKontener .answer");
 
 //#region Kérdések kezelése
 /*
@@ -67,7 +69,7 @@ function KovetkezoKerdes() {
     aktivKerdes = MaradekKerdesek[Math.floor(Math.random() * MaradekKerdesek.length)];
     aktivKerdes.kihuzott = true;
 
-    let lehetsegesValaszok = LehetsegesValaszok(tetel);
+    let lehetsegesValaszok = LehetsegesValaszok(aktivKerdes.tetel);
     let valaszok = [];
     for (let i = 0; i < 3; i++) {
         const v = lehetsegesValaszok[Math.floor(Math.random() * lehetsegesValaszok.length)];
@@ -76,7 +78,13 @@ function KovetkezoKerdes() {
     }
     valaszok.splice(Math.floor(Math.random() * 4), 0, aktivKerdes.valasz);
 
-    //todo: html módosítása
+    KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel;
+    KerdesKontener.querySelector("p").innerText = aktivKerdes.kerdes;
+
+    for (let index = 0; index < valaszok.length; index++) {
+        ValaszGombok[index].querySelector("span").innerText = valaszok[index];
+        ValaszGombok[index].value = valaszok[index];
+    }
 }
 
 function Valaszol(valasz) {
@@ -91,9 +99,17 @@ function Valaszol(valasz) {
 }
 //#endregion
 
+//#region Event Listenerek
+ValaszGombok.forEach(x => x.addEventListener("click", e => {
+    Valaszol(e.target.value);
+}));
+//#endregion
+
 async function Init() {
     await KerdesekBetoltese();
-    console.log(Kerdesek);
+    
+    //TESZT
+    JatekIndit("_osszes");
 }
 
 Init();
