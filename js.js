@@ -11,7 +11,7 @@ const EredmenyGrid = document.getElementById("eredmenyGrid");
 let Kerdesek = {};
 
 async function KerdesekBetoltese() {
-    const r = await fetch("/teszt.csv");
+    const r = await fetch("/data.csv");
     const szoveg = await r.text();
 
     const sorok = szoveg.trim().split("\n");
