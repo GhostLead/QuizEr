@@ -37,13 +37,13 @@ option{
 }
 
 .circle{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: orange;
-    margin: 0 10px;
+    margin: 0 5px;
     border-radius: 50%;
     text-align: center;
-    font-size: 52px;
+    font-size: 35px;
     text-align: center;
     color: white;
 }
@@ -55,7 +55,7 @@ option{
 
 .answer{
     width: 80vw;
-    height: 20%;
+    height: 15%;
     border-radius: 50px 50px;
     margin: 10px;
     display: flex;
@@ -75,6 +75,7 @@ option{
     height: 50vh;
     position: absolute;
     top: 0vh;
+    overflow-y: auto;
 }
 
 h1{
@@ -97,6 +98,95 @@ p{
     text-align: justify;
 }
 
+@media (min-width: 1900px) {
+    #valaszKontener{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .answer{
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .circle:first-child{
+        align-self: flex-start;
+        margin: 10px;
+    }
+
+    .circle:last-child{
+        align-self: flex-end;
+        margin: 10px;
+    }
+}
+
+@media (max-height: 400px) and (min-width: 1000px){
+    #valaszKontener{
+        display: flex;
+        flex-direction: row;
+        height: 30vh;
+        top: 70vh;
+    }
+
+    .answer{
+        width: 15vw;
+        height: 10vh;
+        border-radius: 50px 50px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .answer span{
+        font-size: 15px;
+    }
+
+    .circle{
+        width: 8vh;
+        height: 8vh;
+        background-color: orange;
+        margin: 0 5px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 7vh;
+        text-align: center;
+        color: white;
+    }
+
+    #kerdesKontener{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: 70vh;
+        position: absolute;
+        top: 0vh;
+        overflow-y: auto;
+    }
+    
+    h1{
+        color: white;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 30px;
+        margin: 0;
+    }
+    
+    hr{
+        width: 90vw;
+    }
+    
+    p{
+        margin: 0;
+        color: white;
+        width: 80vw;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        text-align: justify;
+    }
+}
 
 
 
