@@ -3,6 +3,8 @@ const KerdesKontener = document.getElementById("kerdesKontener");
 const ValaszGombok = document.querySelectorAll("#valaszKontener .answer");
 const QuizKontener = document.getElementById("QuizKontener");
 const EredmenyGrid = document.getElementById("eredmenyGrid");
+const Kepek = document.getElementById("kepek");
+const KepekGomb = document.getElementById("valtasKepekre");
 
 //#region Kérdések kezelése
 /*
@@ -99,6 +101,21 @@ function KovetkezoKerdes() {
         ValaszGombok[index].querySelector("span").innerText = valaszok[index];
         ValaszGombok[index].value = valaszok[index];
     }
+
+    // Képek felrakása
+    Kepek.innerHTML = "";
+    if (aktivKerdes.kepek.length > 0) {
+        KepekGomb.style.visibility = "visible";
+        for (const kep of aktivKerdes.kepek) {
+            const el = document.createElement("img");
+            el.src = "/Images/" + kep;
+            Kepek.appendChild(el);
+        }
+    } else {
+        KepekGomb.style.visibility = "hidden";
+    }
+
+    
 }
 
 function Valaszol(valasz) {
@@ -151,6 +168,14 @@ ValaszGombok.forEach(x => x.addEventListener("click", e => {
 
 document.querySelector("#inditas").addEventListener("click", () => {
     JatekIndit(TetelekLista.value, document.getElementById("forditott").checked);
+});
+
+KepekGomb.addEventListener("click", () => {
+    Kepek.style.display = "";
+})
+
+Kepek.addEventListener("click", () => {
+    Kepek.style.display = "none";
 });
 
 function TetelOptionFelrak() {
