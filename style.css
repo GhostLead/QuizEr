@@ -51,6 +51,7 @@
     button:nth-of-type(1) {
         background-color: orange;
         font-weight: bold;
+        cursor: pointer;
     }
 }
 
@@ -132,12 +133,23 @@
 .answer{
     position: relative;
     width: 80vw;
+    min-height: fit-content;
     height: 15%;
     border-radius: 50px 50px;
     margin: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: 0.5s;
+}
+
+.answer:hover{
+    filter:hue-rotate(70deg) invert(0);
+    cursor: pointer;
+}
+
+.answer:active{
+    filter:hue-rotate(0deg) invert(0);
 }
 
 
@@ -337,3 +349,25 @@ body{
     padding: 0;
     margin: 0;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #00006a;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px 10px;
+    cursor: pointer;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #DDDDDD;
+  }
