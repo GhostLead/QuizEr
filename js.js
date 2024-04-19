@@ -14,7 +14,7 @@ async function KerdesekBetoltese() {
     const r = await fetch("/data.csv");
     const szoveg = await r.text();
 
-    const sorok = szoveg.trim().split("\n");
+    const sorok = szoveg.trim().split("\n").splice(1);
     for (const sor of sorok) {
         const mezok = sor.trim().split(";");
 
