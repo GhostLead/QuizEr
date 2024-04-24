@@ -238,6 +238,12 @@ KepekGomb.addEventListener("click", () => {
     Kepek.style.display = "";
 })
 
+TanulasGomb.addEventListener("click", () =>{
+    document.getElementById("InditoKontener").style.display = "none";
+    ElozetesTudas()
+
+})
+
 Kepek.addEventListener("click", () => {
     Kepek.style.display = "none";
 });
