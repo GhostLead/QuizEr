@@ -45,7 +45,7 @@ function KiirBetunkent(celhely, kerdesUzenet, sebesseg){
 
 
 async function KerdesekBetoltese() {
-    const r = await fetch("/data.csv");
+    const r = await fetch("/data2.csv");
     const szoveg = await r.text();
 
     const sorok = szoveg.trim().split("\n").splice(1);

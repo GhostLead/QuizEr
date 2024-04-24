@@ -131,25 +131,19 @@
     max-width: 500px;
     margin: auto;
 
-    background-color: white;
+    background-color: var(--beallitashatter);
+    color: white;
     padding: 2rem;
     border-radius: 50px 50px;
 
-    .helyes {
-        color: green;
-    }
-
-    .rossz {
-        color: red;
-    }
-
     >div:nth-child(3n + 1) {
-        font-weight: bold;
+        color: var(--betterwheat);
     }
 
     >div:nth-child(3n) {
         border-bottom: 2px solid black;
         padding-bottom: 4px;
+        color: rgb(0, 255, 0);
     }
 }
 
