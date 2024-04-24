@@ -12,6 +12,37 @@ const KepekGomb = document.getElementById("valtasKepekre");
  */
 let Kerdesek = {};
 
+function DisableGombok() {
+    document.getElementById("Akartya").disabled = true;
+    document.getElementById("Bkartya").disabled = true;
+    document.getElementById("Ckartya").disabled = true;
+    document.getElementById("Dkartya").disabled = true;
+    document.getElementById("Ekartya").disabled = true;
+}
+
+function EnableGombok() {
+    document.getElementById("Akartya").disabled = false;
+    document.getElementById("Bkartya").disabled = false;
+    document.getElementById("Ckartya").disabled = false;
+    document.getElementById("Dkartya").disabled = false;
+    document.getElementById("Ekartya").disabled = false;
+}
+
+//kerdeskiiro
+function KiirBetunkent(celhely, kerdesUzenet, sebesseg){
+    var i = 0;
+    DisableGombok();
+    var interval = setInterval(function(){
+        document.getElementById(celhely).innerHTML += kerdesUzenet.charAt(i);
+        i++;
+        if (i > kerdesUzenet.length){
+            clearInterval(interval);
+            EnableGombok();
+        }
+    }, sebesseg);
+}
+
+
 async function KerdesekBetoltese() {
     const r = await fetch("/data.csv");
     const szoveg = await r.text();
@@ -94,8 +125,10 @@ function KovetkezoKerdes() {
     valaszok.splice(Math.floor(Math.random() * 5), 0, forditott ? aktivKerdes.kerdes : aktivKerdes.valasz);
 
     // Kérdés, gombok átírása
-    KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel.slice(5);
-    KerdesKontener.querySelector("p").innerText = forditott ? aktivKerdes.valasz : aktivKerdes.kerdes;
+    KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel;
+    // KerdesKontener.querySelector("p").innerText = forditott ? aktivKerdes.valasz : aktivKerdes.kerdes;
+    document.getElementById("kerdes").innerHTML = "";
+    KiirBetunkent("kerdes", forditott ? aktivKerdes.valasz : aktivKerdes.kerdes, 40);
 
     for (let index = 0; index < valaszok.length; index++) {
         ValaszGombok[index].querySelector("span").innerText = valaszok[index];
@@ -138,7 +171,7 @@ function Eredmenyek() {
 
     for (const k of ertekeles) {
         const tetelEl = document.createElement("div");
-        tetelEl.innerHTML = k.kerdes.tetel.slice(5);
+        tetelEl.innerHTML = k.kerdes.tetel;
         EredmenyGrid.appendChild(tetelEl);
 
         const kerdesEl = document.createElement("div");
