@@ -101,6 +101,29 @@ function JatekIndit(_tetel, _forditott) {
     QuizKontener.style.display = "block";
 }
 
+function ElozetesTudas() {
+
+
+    document.getElementById("TanulasKontener").style.display="";
+    
+    for (const k of OsszesKerdes()) {
+        const tetelEl = document.createElement("div");
+        tetelEl.innerHTML = k.tetel;
+        TanulasGrid.appendChild(tetelEl);
+
+        const kerdesEl = document.createElement("div");
+        kerdesEl.innerHTML = k[forditott ? "valasz" : "kerdes"];
+        TanulasGrid.appendChild(kerdesEl);
+
+        const helyesEl = document.createElement("div");
+        helyesEl.innerHTML = k.helyes ? "✔" : k[forditott ? "kerdes" : "valasz"];
+        helyesEl.className = "helyes";
+        TanulasGrid.appendChild(helyesEl);
+    }
+
+}
+
+
 function KovetkezoKerdes() {
     if (hatralevoKerdesek == 0) {
         Eredmenyek();
@@ -161,6 +184,8 @@ function Valaszol(valasz) {
 
     KovetkezoKerdes();
 }
+
+
 
 function Eredmenyek() {
     const mennyibol = ertekeles.length;
