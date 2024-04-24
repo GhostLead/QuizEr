@@ -155,7 +155,7 @@ function KovetkezoKerdes() {
     valaszok.splice(Math.floor(Math.random() * 5), 0, forditott ? aktivKerdes.kerdes : aktivKerdes.valasz);
 
     // Kérdés, gombok átírása
-    KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel;
+    KerdesKontener.querySelector("h1").innerText = aktivKerdes.tetel.slice(5);
     // KerdesKontener.querySelector("p").innerText = forditott ? aktivKerdes.valasz : aktivKerdes.kerdes;
     document.getElementById("kerdes").innerHTML = "";
     KiirBetunkent("kerdes", forditott ? aktivKerdes.valasz : aktivKerdes.kerdes, 40);
