@@ -1,8 +1,16 @@
 :root{
     --betterwheat: rgb(218, 186, 127);
-    --darkerbetterwheat: rgb(197, 166, 107);
+    --betterwheat2: rgb(255, 214, 137);
     --kartyahatter: rgb(100, 100, 100);
     --beallitashatter: rgb(63, 63, 63);
+    --hovereffect: rgb(111, 111, 255);
+
+    --lighterbeallitashatter: rgb(100, 100, 100);
+    --lighthovereffect: rgb(143, 143, 255);
+    --extralightbeallitashatter: rgb(155, 155, 155);
+
+    --darkerbetterwheat: rgb(197, 166, 107);
+    --darkhovereffect: rgb(80, 80, 255);
 }
 
 #InditoKontener {
@@ -44,14 +52,14 @@
         border-end-start-radius: 10px;
         border-spacing: 10px;
         font-size: 1.2rem;
-        color: wheat;
+        color: var(--betterwheat2);
         text-decoration: dashed;
         max-width: 90%;
     }
 
     input {
         margin-top: 10px;
-        accent-color: var(--betterwheat);
+        accent-color: var(--lighthovereffect);
     }
 
     button {
@@ -62,7 +70,19 @@
         font-size: 1.5rem;
         font-weight: bold;
         cursor: pointer;
+        transition-duration: 0.35s;
     }
+
+    #inditas:hover {
+        color: var(--darkhovereffect);
+        background-color: var(--extralightbeallitashatter);;
+    }
+
+    #tanulas:hover {
+        color: var(--darkhovereffect);
+        background-color: var(--extralightbeallitashatter);
+    }
+
 
     button:nth-of-type(1) {
         background-color: var(--betterwheat);
@@ -113,6 +133,7 @@
     >div:nth-child(4n + 1) {
         /* font-weight: bold; */
         color: var(--betterwheat);
+        font-weight: bolder;
     }
 
     >div:nth-child(4n) {
@@ -120,8 +141,17 @@
         padding-bottom: 4px;
     }
 
-    .fejlec {
+    #fejlecTetel {
         color: var(--betterwheat);
+    }
+    #fejlecKerdes {
+        color: white;
+    }
+    #fejlecAdottValasz {
+        color: red;
+    }
+    #fejlecHelyesValasz {
+        color: rgb(0, 255, 0);
     }
 
 }
@@ -140,7 +170,8 @@
     border-radius: 50px 50px;
 
     >div:nth-child(3n + 1) {
-        color: var(--betterwheat);
+        color: var(--betterwheat2);
+        font-weight: bolder;
     }
 
     >div:nth-child(3n) {
@@ -192,11 +223,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: 0.5s;
+    transition: 0.35s;
 }
 
 .answer:hover{
-    filter:hue-rotate(70deg) invert(0);
+    filter:hue-rotate(30deg) invert(1);
     cursor: pointer;
 }
 
@@ -274,19 +305,31 @@ p{
         max-height: 100%;
 
         border-radius: 0.5rem;
+        border: 2px solid var(--hovereffect);
         box-shadow: 5px 5px black;
     }
 }
 
 #valtasKepekre {
-    background-color: var(--darkerbetterwheat);
+    background-color: var(--lighterbeallitashatter);
+    color: wheat;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    font-size: medium;
+    font-size: 120%;
     border-radius: 50px 50px;
     padding: 1rem;
     margin-bottom: 0.6rem;
+    transition-duration: 0.35s;
+}
+
+#valtasKepekre:hover {
+    color: var(--darkhovereffect);
+    background-color: var(--extralightbeallitashatter);
     cursor: pointer;
+}
+
+#valtasKepekre:active {
+    filter:hue-rotate(0deg) invert(0);
 }
 
 @media screen and (min-width: 1200px) {
