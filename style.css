@@ -151,7 +151,7 @@
 
 .answer span{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 .answer{
@@ -298,6 +298,20 @@ p{
     }
 }
 
+@media (max-width: 600px){
+
+    .answer span{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 300px){
+
+    .answer span{
+        font-size: 0.6rem;
+    }
+}
+
 @media (max-height: 400px) and (min-width: 1000px){
     #valaszKontener{
         display: flex;
@@ -317,7 +331,7 @@ p{
     }
 
     .answer span{
-        font-size: 15px;
+        font-size: 1rem;
     }
 
     .circle{
