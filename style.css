@@ -397,7 +397,7 @@ body{
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #00006a;
+    background: var(--beallitashatter);
   }
   
   /* Handle */
