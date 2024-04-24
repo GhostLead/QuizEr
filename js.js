@@ -77,6 +77,13 @@ function Tetelek() {
     return Object.keys(Kerdesek);
 }
 
+function Refresh(){
+    setTimeout(function(){
+        window.location.reload();
+      });
+}
+
+
 function LehetsegesValaszok(tetel, forditott) {
     return tetel in Kerdesek ? Kerdesek[tetel].map(x => forditott ? x.kerdes : x.valasz) : [];
 }
@@ -99,6 +106,28 @@ function JatekIndit(_tetel, _forditott) {
 
     document.getElementById("InditoKontener").style.display = "none";
     QuizKontener.style.display = "block";
+}
+
+function ElozetesTudas() {
+
+
+    document.getElementById("TanulasKontener").style.display="";
+    
+    for (const k of OsszesKerdes()) {
+        const tetelEl = document.createElement("div");
+        tetelEl.innerHTML = k.tetel;
+        TanulasGrid.appendChild(tetelEl);
+
+        const kerdesEl = document.createElement("div");
+        kerdesEl.innerHTML = k[forditott ? "valasz" : "kerdes"];
+        TanulasGrid.appendChild(kerdesEl);
+
+        const helyesEl = document.createElement("div");
+        helyesEl.innerHTML = k.helyes ? "✔" : k[forditott ? "kerdes" : "valasz"];
+        helyesEl.className = "helyes";
+        TanulasGrid.appendChild(helyesEl);
+    }
+
 }
 
 function KovetkezoKerdes() {
