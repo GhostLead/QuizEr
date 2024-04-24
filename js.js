@@ -191,6 +191,8 @@ function Valaszol(valasz) {
     KovetkezoKerdes();
 }
 
+
+
 function Eredmenyek() {
     const mennyibol = ertekeles.length;
     const helyes = ertekeles.filter(x => x.helyes).length;
