@@ -55,11 +55,13 @@
     }
 
     button {
-        background-color: white;
+        background-color: wheat;
         border-radius: 50px 50px;
         padding: 1rem;
         width: 100%;
         font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
     }
 
     button:nth-of-type(1) {
@@ -90,6 +92,7 @@
     width: 80vh;
     max-width: 750px;
     margin: auto;
+    margin-bottom: 50px;
 
     background-color: var(--beallitashatter);
     padding: 2rem;
@@ -243,6 +246,7 @@ p{
     width: 5vh;
     margin-top: 2vh;
     margin-left: 1vw;
+    cursor: pointer;
 }
 
 #kepek {
