@@ -171,7 +171,7 @@ function Eredmenyek() {
 
     for (const k of ertekeles) {
         const tetelEl = document.createElement("div");
-        tetelEl.innerHTML = k.kerdes.tetel;
+        tetelEl.innerHTML = k.kerdes.tetel.slice(5);
         EredmenyGrid.appendChild(tetelEl);
 
         const kerdesEl = document.createElement("div");
