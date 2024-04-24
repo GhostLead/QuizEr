@@ -1,3 +1,10 @@
+:root{
+    --betterwheat: rgb(218, 186, 127);
+    --darkerbetterwheat: rgb(197, 166, 107);
+    --kartyahatter: rgb(100, 100, 100);
+    --beallitashatter: rgb(63, 63, 63);
+}
+
 #InditoKontener {
     display: flex;
     flex-direction: column;
@@ -17,10 +24,11 @@
 
         margin-bottom: 2rem;
 
-        background-color: white;
+        background-color: var(--beallitashatter);
         padding: 2rem;
         border-radius: 50px;
         font-size: 1.5rem;
+        color: white;
     }
 
     label {
@@ -30,14 +38,20 @@
     select {
         padding: 1rem;
         margin-bottom: 2rem;
-
-        border: none;
+        margin-top: 10px;
+        background-color: rgb(59, 59, 59);
+        border: 2px solid wheat;
+        border-end-start-radius: 10px;
+        border-spacing: 10px;
         font-size: 1.2rem;
-        text-decoration: underline;
+        color: wheat;
+        text-decoration: dashed;
+        max-width: 90%;
     }
 
     input {
-        accent-color: orange;
+        margin-top: 10px;
+        accent-color: var(--betterwheat);
     }
 
     button {
@@ -49,7 +63,7 @@
     }
 
     button:nth-of-type(1) {
-        background-color: orange;
+        background-color: var(--betterwheat);
         font-weight: bold;
         cursor: pointer;
     }
@@ -74,29 +88,39 @@
     row-gap: 1rem;
 
     width: 80vh;
-    max-width: 500px;
+    max-width: 750px;
     margin: auto;
 
-    background-color: white;
+    background-color: var(--beallitashatter);
     padding: 2rem;
     border-radius: 50px 50px;
 
+    color: white;
+
     .helyes {
-        color: green;
+        color: rgb(0, 255, 0);
     }
 
     .rossz {
-        color: red;
+        color: rgb(255, 0, 0);
     }
 
+    
+
     >div:nth-child(4n + 1) {
-        font-weight: bold;
+        /* font-weight: bold; */
+        color: var(--betterwheat);
     }
 
     >div:nth-child(4n) {
         border-bottom: 2px solid black;
         padding-bottom: 4px;
     }
+
+    .fejlec {
+        color: var(--betterwheat);
+    }
+
 }
 
 
@@ -116,7 +140,7 @@
 
     width: 40px;
     height: 40px;
-    background-color: orange;
+    background-color: rgb(207, 168, 96);
     margin: 0 5px;
     border-radius: 50%;
     text-align: center;
@@ -127,10 +151,12 @@
 
 .answer span{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 2rem;
+    font-size: 30px;
 }
 
 .answer{
+    background-color: var(--kartyahatter);
+    color: var(--betterwheat);
     position: relative;
     width: 80vw;
     min-height: fit-content;
@@ -272,20 +298,6 @@ p{
     }
 }
 
-@media (max-width: 600px){
-
-    .answer span{
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 300px){
-
-    .answer span{
-        font-size: 0.6rem;
-    }
-}
-
 @media (max-height: 400px) and (min-width: 1000px){
     #valaszKontener{
         display: flex;
@@ -305,13 +317,13 @@ p{
     }
 
     .answer span{
-        font-size: 3rem;
+        font-size: 15px;
     }
 
     .circle{
         width: 8vh;
         height: 8vh;
-        background-color: orange;
+        background-color: wheat;
         margin: 0 5px;
         border-radius: 50%;
         text-align: center;
@@ -359,7 +371,7 @@ p{
 
 
 body{
-    background-color: #00006a;
+    background-color: #292929;
     padding: 0;
     margin: 0;
 }
