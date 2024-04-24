@@ -25,7 +25,7 @@ async function KerdesekBetoltese() {
         }
 
         Kerdesek[mezok[0]].push({
-            tetel: mezok[0],
+            tetel: mezok[0].slice(5,mezok[0].length),
             kerdes: mezok[1],
             valasz: mezok[2],
             kepek: mezok.slice(3),
