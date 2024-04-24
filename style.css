@@ -58,7 +58,7 @@
         background-color: wheat;
         border-radius: 50px 50px;
         padding: 1rem;
-        width: 100%;
+        width: 70%;
         font-size: 1.5rem;
         font-weight: bold;
         cursor: pointer;
@@ -90,7 +90,7 @@
     row-gap: 1rem;
 
     width: 80vh;
-    max-width: 750px;
+    max-width: 800px;
     margin: auto;
     margin-bottom: 50px;
 
@@ -279,10 +279,14 @@ p{
 }
 
 #valtasKepekre {
-    background-color: white;
+    background-color: var(--darkerbetterwheat);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: medium;
     border-radius: 50px 50px;
     padding: 1rem;
     margin-bottom: 0.6rem;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1200px) {
