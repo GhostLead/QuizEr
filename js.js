@@ -3,6 +3,7 @@ const KerdesKontener = document.getElementById("kerdesKontener");
 const ValaszGombok = document.querySelectorAll("#valaszKontener .answer");
 const QuizKontener = document.getElementById("QuizKontener");
 const EredmenyGrid = document.getElementById("eredmenyGrid");
+const TanulasGrid = document.getElementById("tanulasGrid");
 const Kepek = document.getElementById("kepek");
 const KepekGomb = document.getElementById("valtasKepekre");
 const TanulasGomb = document.getElementById("tanulas")
