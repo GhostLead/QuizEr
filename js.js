@@ -5,7 +5,7 @@ const QuizKontener = document.getElementById("QuizKontener");
 const EredmenyGrid = document.getElementById("eredmenyGrid");
 const Kepek = document.getElementById("kepek");
 const KepekGomb = document.getElementById("valtasKepekre");
-
+const TanulasGomb = document.getElementById("tanulas")
 //#region Kérdések kezelése
 /*
  * Kérdések tétel szerint.
